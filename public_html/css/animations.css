@@ -1,0 +1,21 @@
+﻿@keyframes grow-from-side{
+    0%{
+        transform: scaleX(0);
+    }
+    100%{
+        transform: scaleX(1);
+    }
+}
+.anim-popup{
+    animation: popup 200ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes popup{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}

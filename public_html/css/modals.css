@@ -1,0 +1,80 @@
+.page-overlay{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0; left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 200;
+    display: none;
+}
+
+.page-overlay #image-zoom-container{
+    height: 80vh;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 210;
+}
+
+#image-zoom-container #image-zoom{
+    height: 100%;
+    position: relative;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
+}
+
+#image-zoom-container i{
+    position: absolute;
+    top: -30px;
+    right: -30px;
+}
+
+.page-overlay #video-capture-container{
+    max-width: 900px;
+    margin: 120px auto;
+    position: relative;
+    display: flex;
+    background: #fff;
+    box-shadow: 0px 0px 20px  rgba(0, 0, 0, 0.6); 
+    border-radius: 20px;
+    overflow: hidden;
+    border: 3px solid #fff;
+}
+
+#video-capture-container #user-webcam-video,
+#video-capture-container #captured-image{
+    flex: 1;
+}
+
+#video-capture-container #video-capture-buttons{
+    text-align: center;
+    background: #fff;
+    width: 200px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translateX(-50%);
+}
+
+#video-capture-buttons i{
+    font-size: 36px;
+    padding: 15px;
+}
+
+@media (max-width: 600px){
+    #video-capture-container{
+        flex-direction: column;
+    }
+    #user-webcam-video,
+    #captured-image{
+        width: 100%;
+    }
+    #video-capture-container #video-capture-buttons{
+        width: 100px;
+    }
+    #video-capture-buttons i{
+        font-size: 24px;
+        padding: 5px;
+    }
+}
