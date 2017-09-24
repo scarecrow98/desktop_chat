@@ -8,8 +8,6 @@
 
 ?>
 
-<!-- kösz -->
-
 <html>
     <head>
         <title>Desktop Chat App</title>
