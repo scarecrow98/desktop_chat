@@ -8,9 +8,10 @@
         $password = $_POST["input-password"];
         $avatar = $_FILES["input-avatar"];
 
-        $regex_fullname = "/[a-zA-Z]/";
-        $regex_username = "/[a-zA-Z0-9]{5,30}/";
-        $regex_password = "/[a-zA-Z0-9]{8,255}/";
+        $regex_firstname = "/^[a-zA-Z]{1,50}$/";
+        $regex_lastname = "/^[a-zA-Z]@[]{1,50}$/";
+        $regex_username = "/^[a-zA-Z0-9/._]{5,30}$/";
+        $regex_password = "/^{8,}$/";
 
         $fail = false;
 

@@ -1,10 +1,12 @@
 ﻿<?php
 
-    /*session_start();
+    session_start();
 
     if( !isset($_SESSION["username"]) ){
-        header("Location: login.php");
-    }*/
+        header("Location: login.php?login=failed");
+    }
+
+    // echo password_hash("test", PASSWORD_BCRYPT);
 
 ?>
 
@@ -54,8 +56,8 @@
             <div id="chat-header">
                 <div id="chat-navigation">
                     <div id="user-info">
-                        <img id="user-profile-pic" src="">
-                        <span id="user-name"><!--felhasználó neve--></span>
+                        <img id="user-profile-pic" src="img/<?php echo $_SESSION["avatar"]?>">
+                        <span id="user-name"><?php echo $_SESSION["first"]." ".$_SESSION["last"] ?></span>
                     </div>
                     <i id="hamburger-icon" class="ion-navicon-round"></i>
                 <div class="clear"></div>

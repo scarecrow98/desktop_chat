@@ -1,10 +1,7 @@
 ﻿//csatlakozás a webszerverhez
-var socket = io.connect('192.168.0.103:3000');
+var socket = io.connect('192.168.64.8:3000');
 
 $(document).ready(function () {
-
-
-    initSessionData();
 
     //newMessage nevű adatcsomag érkezésekor DOM elem generálása az üzenetből 
     socket.on('newMessage', function(message){

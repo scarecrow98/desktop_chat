@@ -4,34 +4,43 @@
     include("php/db-con.php");
 
     if( isset($_POST["btn-login"]) ){
-        $username = addslashes( strip_tags( htmlspecialchars( $_POST["input-username"] ) ) );
-        $password = addslashes( strip_tags( htmlspecialchars( $_POST["input-password"] ) ) );
+        $username = $_POST["input-username"];
+        $password = $_POST["input-password"];
+        $password_hash = hash('sha256', $password);
+        $regex_username = "/^[a-zA-Z0-9._-]{5,30}$/";
 
-        if( $username == "" || $password == "" ){
-            echo '<div class="error-message"> Nem adtál meg felhasználónevet vagy jelszót! </div>';
+        if( $password == "" || $username == ""){
+            echo "Felhasználónév vagy jelszó nincs megadva!";
         }
         else{
-            $query = "SELECT * FROM users WHERE username = '". $username ."' AND password = '". md5($password) ."'";
-            $result = mysqli_query($connect, $query) or die("Nem sikerült végrehajtani a parancsot az adatbázisban!");
+            try{
+                $db = newDatabaseConnection();
+                $prepared = $db->prepare("SELECT * FROM users WHERE user_name = :username AND user_password = :password");
+                $prepared->bindParam(":username", $username);
+                $prepared->bindParam(":password", $password_hash);
+                $prepared->execute();
+                $result = $prepared->fetch(PDO::FETCH_ASSOC);
 
-            if( mysqli_num_rows($result) == 1 ){
-                $user_data = mysqli_fetch_assoc($result);
-                $_SESSION["username"] = $user_data["username"];
-                $_SESSION["fullname"] = $user_data["fullname"];
-                $_SESSION["profpic"] = $user_data["avatar"];
-
-                $query = "UPDATE users SET online = 1 WHERE username = '" . $user_data["username"] . "'";
-                mysqli_query($connect, $query) or die(mysqli_error($connect));
-                
-
-                header("Location: index.php");
+                if( $prepared->rowCount() == 1 ){
+                    $_SESSION["username"] = $result["user_name"];
+                    $_SESSION["password"] = $result["user_password"];
+                    $_SESSION["id"] = $result["user_id"];
+                    $_SESSION["avatar"] = $result["user_avatar"];
+                    $_SESSION["first"] = $result["user_first"];
+                    $_SESSION["last"] = $result["user_last"];
+                    $_SESSION["email"] = $result["user_email"];
+                    header("Location: index.php?login=success");
+                }
+                else{
+                    echo "Felhasználói adatok helytelenek!";
+                }
             }
-            else{
-                echo '<div class="error-message"> Felhasználónév vagy jelszó nem megfelelő! </div>';
+            catch(PDOException $e){
+                echo "Hiba: " . $e->getMessage();
+                die();
             }
         }
-
-    } 
+    }
 
 ?>
 

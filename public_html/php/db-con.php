@@ -7,7 +7,7 @@
 
     function newDatabaseConnection(){
         $db = new PDO("mysql:host=".host_name.";dbname=".db_name, db_user, db_password);
-        $db->setAtrribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $db;
     }
 

@@ -61,32 +61,13 @@ function phpBase64Encode(base64image){
     });
 }
 
-function initSessionData(){
-    $.ajax({
-        type: "POST",
-        url: "php/init-session-data.php",
-        success: function(response){
-            $("#user-profile-pic").attr("src", "img/avatars/"+ response.profpic);
-            $("#user-name").html(response.fullname);
-            socket.emit("userConnected", response.fullname);
-
-        },
-        error: function(){
-            alert("Felhasználói adatok lekérése a szerverről sikertelen! :(");
-        }
-    });
-}
-
-function phpStoreMessgage(message) {
+function storeMessage(message) {
     $.ajax({
         type: "POST",
         url: "../php/store-messages.php",
-        data: message,
-        succes: function (response) {
+        data: {
+            text: message.text,
             
-        },
-        error: function (error) {
-            alert("Nem sikerült az üzenetek elküldése! :(");
         }
     });
 }
