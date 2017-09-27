@@ -18,7 +18,7 @@ function uploadImage(){
             if(response.result == "success"){
 
                 var message = new Message({
-                    text: "",
+                    text: null,
                     time: getMessageTime(),
                     sticker: null,
                     image: response.imageName
@@ -46,7 +46,7 @@ function phpBase64Encode(base64image){
         success: function(response){
 
             var message = new Message({
-                text: "",
+                text: null,
                 time: getMessageTime(),
                 sticker: null,
                 image: response.imageName 
@@ -61,13 +61,21 @@ function phpBase64Encode(base64image){
     });
 }
 
-function storeMessage(message) {
+function phpStoreMessage(message) {
     $.ajax({
         type: "POST",
-        url: "../php/store-messages.php",
+        url: "php/store-messages.php",
         data: {
+            message: true,
             text: message.text,
-            
+            image: message.image,
+            sticker: message.sticker
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (err) {
+            console.log(err);
         }
     });
 }

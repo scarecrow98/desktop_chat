@@ -86,6 +86,7 @@ function sendMessage(){
     }
     else{
         createNewMessage(message, "own");
+        phpStoreMessage(message);
         $("#textfield").val("");
     }
 
@@ -126,7 +127,7 @@ function setMessageAtrributes(time, millisec){
 //létrehoz egy üzenet buborákot a kiválasztott matricával
 function sendSticker(sticker_src){
     var message = new Message({
-        text: "",
+        text: null,
         time: getMessageTime(),
         sticker: sticker_src,
         image: null

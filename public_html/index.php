@@ -5,9 +5,6 @@
     if( !isset($_SESSION["username"]) ){
         header("Location: login.php?login=failed");
     }
-
-    // echo password_hash("test", PASSWORD_BCRYPT);
-
 ?>
 
 <html>
