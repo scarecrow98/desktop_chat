@@ -97,10 +97,12 @@
                                     <li>&nbsp;</li>
                                     <li>&nbsp;</li>
                                     <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
                                 </ul>
                                 <div class="tab-1 sticker-tab active-tab"><!--matrica ikonok--></div>
                                 <div class="tab-2 sticker-tab"><!--matrica ikonok--></div>
                                 <div class="tab-3 sticker-tab"><!--matrica ikonok--></div>
+                                <div class="tab-4 sticker-tab"><!--matrica ikonok--></div>
                             </div>
                         </div>
                         <div class="icon-wrapper">

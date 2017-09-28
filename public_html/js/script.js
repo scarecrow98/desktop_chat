@@ -35,6 +35,11 @@ $(document).ready(function () {
             '<img src="stickers/text_' + i + '.png" class="sticker-icon">'
         );
     }
+    for (var i = 1; i <= 48; i++) {
+        $(".sticker-panel .tab-4").append(
+            '<img src="stickers/emoji' + i + '.png" class="sticker-icon">'
+        );
+    }
     
     //matrica panel nyitása/zárása klikkel
     $(".ion-happy").click(function(){

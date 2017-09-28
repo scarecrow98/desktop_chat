@@ -296,8 +296,8 @@ body{
 #tab-indexes li{
     float: left;
     list-style: none;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     border: 1px solid #b2b2b2;
     border-radius: 50%;
     cursor: pointer;
@@ -326,7 +326,7 @@ body{
 
 .emoji-panel .emoji-icon{
     display: inline-block;
-    font-size: 30px;
+    font-size: 22px;
     padding: 6px;
     cursor: pointer;
     transform: scale(1);
@@ -338,7 +338,7 @@ body{
 
 .sticker-panel .sticker-icon{
     display: inline-block;
-    width: 80px;
+    width: 70px;
     margin: 10px;
     cursor: pointer;
     transform: scale(1);
