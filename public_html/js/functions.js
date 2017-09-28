@@ -3,7 +3,6 @@ function createNewMessage(message, classType){
     var date = new Date();
 
     if (message.text === null) { message.text = ""; }
-    console.log(message.text);
 
     if ($("#section-messages").children().length > 0) { //ha már van üzenetbuborék (tehát nem most kezdődik a beszélgetés)
         var lastMessageTime = $(".message-bubble").last().attr("data-time-millisec"); //utolsó üzenet ideje
@@ -133,6 +132,7 @@ function sendSticker(sticker_src){
         sticker: sticker_src,
         image: null
     });
+    phpStoreMessage(message);
     createNewMessage(message, "own");
     socket.emit('newMessage', message);
 }

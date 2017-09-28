@@ -52,10 +52,11 @@ function phpBase64Encode(base64image){
                 image: response.imageName 
             });
 
+            phpStoreMessage(message);
             createNewMessage(message, "own");
             socket.emit('newMessage', message);
         },
-        error: function(){
+        error: function(err){
             alert("Hoppá! Valamiért nem sikerült feltölteni a képed :(");
         }
     });

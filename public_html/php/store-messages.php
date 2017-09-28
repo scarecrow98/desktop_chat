@@ -9,7 +9,7 @@
             $text = $_POST["text"];
             $sticker = $_POST["sticker"];
             $image = $_POST["image"];
-
+            echo $image;
             $db = newDatabaseConnection();
             $prepare = $db->prepare("INSERT INTO messages(msg_sender, msg_text, msg_time, msg_image, msg_sticker) VALUES(:sender, :text, :time, :image, :sticker)");
             $prepare->bindParam(":sender", $sender);
