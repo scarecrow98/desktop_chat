@@ -57,14 +57,46 @@ body{
     margin: 0px auto;
 }
 
-#chat-navigation #hamburger-icon{
-    font-size: 28px;
+#chat-navigation #menu-container{
     float: right;
+    position: relative;
+}
+
+#menu-container #hamburger-icon{
+    font-size: 28px;
     display: block;
 }
     #hamburger-icon:hover{
         cursor: pointer;
         text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+
+#menu-container #main-menu{
+    width: 200px;
+    background: #fff;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+    list-style: none;
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    display: none;
+}
+
+#menu-container #main-menu li a{
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: 400;
+    color: #333;
+}
+    #menu-container #main-menu li a:before{
+        margin-right: 15px;
+    }
+    #menu-container #main-menu li a:hover{
+        box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.3);
+        background: #b2b2b2;
+        color: #fff;
+        cursor: pointer;
     }
 
 #chat-navigation #user-info{
@@ -309,10 +341,16 @@ body{
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
     }
     #tab-indexes li:first-child{
-        background-image: url("../stickers/mouth_icon.png");
+        background-image: url("../stickers/mouth_thumb.png");
     }
     #tab-indexes li:nth-child(2){
-        background-image: url("../stickers/face_icon.png");
+        background-image: url("../stickers/face_thumb.png");
+    }
+    #tab-indexes li:nth-child(3){
+        background-image: url("../stickers/text_thumb.png");
+    }
+    #tab-indexes li:nth-child(4){
+        background-image: url("../stickers/emoji_thumb.png");
     }
 
 .sticker-panel .sticker-tab{

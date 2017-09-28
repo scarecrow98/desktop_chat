@@ -56,10 +56,16 @@
                         <img id="user-profile-pic" src="img/<?php echo $_SESSION["avatar"]?>">
                         <span id="user-name"><?php echo $_SESSION["first"]." ".$_SESSION["last"] ?></span>
                     </div>
-                    <i id="hamburger-icon" class="ion-navicon-round"></i>
-                <div class="clear"></div>
+                    <div id="menu-container">
+                        <i id="hamburger-icon" class="ion-navicon-round"></i>
+                        <ul id="main-menu">
+                            <li><a href="#" class="ion-person">Saját profil</a></li>
+                            <li><a href="logout.php" class="ion-log-out">Kijelentkezés</a></li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
             </div>
-        </div>
 
 <!-- chat szekció -->
             <div id="chat-box">

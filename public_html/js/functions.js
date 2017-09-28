@@ -2,52 +2,53 @@
 function createNewMessage(message, classType){
     var date = new Date();
 
-    if($("#section-messages").children().length > 0){ //ha már van üzenetbuborék (tehát nem most kezdődik a beszélgetés)
+    if (message.text === null) { message.text = ""; }
+    console.log(message.text);
+
+    if ($("#section-messages").children().length > 0) { //ha már van üzenetbuborék (tehát nem most kezdődik a beszélgetés)
         var lastMessageTime = $(".message-bubble").last().attr("data-time-millisec"); //utolsó üzenet ideje
 
-        if((date.getTime() - lastMessageTime) < 120000){ //ha az utolsó üzenet kevesebb, mint 2 perce volt, akkor...
-            if($(".message-wrapper").last().hasClass("message-"+classType)){ //ha az utolsó message-wrapper és az új classType-ja is egyforma, akkor az utolsóhoz simán hozzáadjuk az üzenetbuborékot
+        if ((date.getTime() - lastMessageTime) < 120000) { //ha az utolsó üzenet kevesebb, mint 2 perce volt, akkor...
+            if ($(".message-wrapper").last().hasClass("message-" + classType)) { //ha az utolsó message-wrapper és az új classType-ja is egyforma, akkor az utolsóhoz simán hozzáadjuk az üzenetbuborékot
                 $(".message-wrapper").last().append(
-                    '<div class="message-bubble">'+ message.text +'</div>'+
+                    '<div class="message-bubble">' + message.text + '</div>' +
                     '<div class="clear"></div>'
                 );
             }
-            else{
+            else {
                 $("#section-messages").append( //...egyébként, ha az utolsó és az új message-wrapper típusa különböző, akkor csinalunk egy új message-wrappert
-                    '<div class="message-wrapper message-'+ classType +'">'+
-                        '<div class="message-bubble">'+ message.text +'</div>'+
-                        '<div class="clear"></div>'+
+                    '<div class="message-wrapper message-' + classType + '">' +
+                    '<div class="message-bubble">' + message.text + '</div>' +
+                    '<div class="clear"></div>' +
                     '</div>'
-                ); 
+                );
             }
         }
-        else{ //egyébként, ha több, mint 2 perces az utolsó üzenet, csinalunk egy új message-wrappert
+        else { //egyébként, ha több, mint 2 perces az utolsó üzenet, csinalunk egy új message-wrappert
             $("#section-messages").append(
-                '<div class="message-wrapper message-'+ classType +'">'+
-                    '<div class="message-bubble">'+ message.text +'</div>'+
-                    '<div class="clear"></div>'+
+                '<div class="message-wrapper message-' + classType + '">' +
+                '<div class="message-bubble">' + message.text + '</div>' +
+                '<div class="clear"></div>' +
                 '</div>'
             );
         }
-        
+    
     }
-    else{//...egyébként csinalunk egy új message-wrappert (első üzenet a beszélgetésben)
+    else {//...egyébként csinalunk egy új message-wrappert (első üzenet a beszélgetésben)
         $("#section-messages").append(
-            '<div class="message-wrapper message-'+ classType +'">'+
-                '<div class="message-bubble">'+ message.text +'</div>'+
-                '<div class="clear"></div>'+
+            '<div class="message-wrapper message-' + classType + '">' +
+            '<div class="message-bubble">' + message.text + '</div>' +
+            '<div class="clear"></div>' +
             '</div>'
         );
     }
 
-    //ha a message.sticker nem null, tehát van tartalma
     if(message.sticker != null){
         $(".message-bubble").last().append(
             '<img src="'+ message.sticker +'" class="sticker">'
         );
     }
-    
-    //ha a message.image nem null, tehát van tartalma
+
     if(message.image != null){
         $(".message-bubble").last().append(
             '<img src="img/uploaded_images/'+ message.image +'" class="image">'

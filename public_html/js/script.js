@@ -41,6 +41,19 @@ $(document).ready(function () {
         );
     }
     
+    $("#hamburger-icon").click(function () {
+        let menu = $("#main-menu");
+        let isOpen = menu.hasClass("menu-open");
+
+        if (isOpen){
+            menu.removeClass("menu-open");
+            menu.slideUp(300);
+        } else {
+            menu.addClass("menu-open");
+            menu.slideDown(300);
+        }
+    });
+    
     //matrica panel nyitása/zárása klikkel
     $(".ion-happy").click(function(){
         $(".sticker-panel").toggleClass("anim-popup");
