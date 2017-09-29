@@ -104,4 +104,9 @@
 #profile-buttons .profile-button{
     padding: 8px 12px;
     border-radius: 4px;
+    cursor: pointer;
 }
+
+    #profile-buttons .profile-button:first-child{
+        background: #5EB6D6;
+    }
