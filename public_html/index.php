@@ -6,7 +6,7 @@
         header("Location: login.php?login=failed");
     }
 ?>
-
+<!DOCTYPE html>
 <html>
     <head>
         <title>Desktop Chat App</title>
@@ -14,8 +14,9 @@
         <link rel="stylesheet" href="css/animations.css"/>
         <link rel="stylesheet" href="css/ionicons.min.css"/>
         <link rel="stylesheet" href="css/modals.css"/>
+        <link rel="stylesheet" href="css/profile.css"/>
         <meta charset="utf-8" lang="hu"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         <script src="js/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
         <script src="js/message.js"></script>
@@ -26,7 +27,7 @@
         <script src="js/ajax.js"></script>
         <script src="js/notifications.js"></script>
     </head>
-    <body scroll="no">
+    <body>
 
 <!-- kinagyított kép -->
         <div class="page-overlay">
@@ -44,6 +45,48 @@
                 <div id="video-capture-buttons">
                     <i class="clickable-icon ion-camera"></i>
                     <i class="clickable-icon ion-android-send" id="send-captured-image"></i>
+                </div>
+            </div>
+        </div>
+
+<!-- felhasználó profilja -->
+        <div class="page-overlay">
+            <div id="profile-container">
+                <i class="clickable-icon ion-close-round"></i>
+                <div id="profile-header">
+                    <div id="pic-container">
+                        <img id="user-profile-pic" src="img/<?php echo $_SESSION["avatar"]?>">
+                        <div id="pic-overlay"><span>Profilkép frissítése</span></div>
+                    </div>
+                    <div id="user-name-container">
+                        <span><?php echo $_SESSION["first"]." ".$_SESSION["last"] ?></span>
+                    </div>
+                </div>
+                <div id="info-container">
+                    <div id="info-line">
+                       <label for="">Lakhely:</label> 
+                       <div id="editable-info-field" contenteditable="true">Dunaföldvár</div>
+                    </div>
+                    <div id="info-line">
+                       <label for="">Munkahely/iskola:</label> 
+                       <div id="editable-info-field" contenteditable="true">AlfaBeta Kft</div>
+                    </div>
+                    <div id="info-line">
+                       <label for="">Születési idő:</label> 
+                       <div id="editable-info-field" contenteditable="true">1998. 07. 31</div>
+                    </div>
+                    <div id="info-line">
+                       <label for="">Születési hely:</label> 
+                       <div id="editable-info-field" contenteditable="true">Dunaújváros</div>
+                    </div>
+                    <div id="info-line">
+                       <label for="">Oldal tagja:</label> 
+                       <div id="editable-info-field" contenteditable="true">2015. 04. 12. óta</div>
+                    </div>
+                </div>
+                <div id="profile-buttons">
+                    <button class="profile-button">Szerkesztés</button>
+                    <button class="profile-button">Mentés</button>
                 </div>
             </div>
         </div>
